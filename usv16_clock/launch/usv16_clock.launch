@@ -1,0 +1,5 @@
+<!-- XML -->
+<launch>
+	<!-- Run Clock Publisher -->
+	<node pkg="usv16_clock" name="clock" type="usv16_clock" output="screen"/>
+</launch>
