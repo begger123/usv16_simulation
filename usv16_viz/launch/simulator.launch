@@ -1,0 +1,41 @@
+
+<launch>
+
+  <!-- IRB - do not need to launch included.launch, launch usv16_sim instead -->
+  <!-- <include file="$(find usv16_viz)/launch/included.launch" > -->
+    <!-- all vars that included.launch requires must be set -->
+    <!-- <arg name="init_x" default="4" /> -->
+    <!-- <arg name="init_y" default="-5" /> -->
+    <!-- <arg name="init_heading" default="1.78" /> -->
+  <!-- </include> -->
+  
+  <!-- Start USV16 launch file -->
+  <include file="$(find usv16_sim)/launch/usv16_sim.launch" > </include>
+
+ <node 
+    pkg="rqt_rviz" 
+    type="rqt_rviz"  
+    name="rviz_node" 
+    args="-d $(find usv16_viz)/config/rviz.rviz"
+  />
+
+  <node
+    pkg="usv16_viz"
+    type="viz_ship"
+    name="visualization_node"
+  />
+
+  <!-- IRB: TODO renable this with custom guidance system-->
+  <!-- <node -->
+    <!-- pkg="usv16_viz" -->
+    <!-- type="los_guidance" -->
+    <!-- name="guidance_node" -->
+    <!-- launch-prefix="xterm -e" -->
+   <!-- /> -->
+  <!-- <node -->
+    <!-- pkg="usv16_viz" -->
+    <!-- type="path_controller" -->
+    <!-- name="control_node" -->
+   <!-- /> -->
+
+</launch>

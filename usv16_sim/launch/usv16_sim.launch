@@ -1,0 +1,6 @@
+<launch>
+
+	<rosparam command="load" file="$(find usv16_sim)/config/usv16_sim_params.yaml" />
+	<node pkg="usv16_sim" name="sim" type="usv16_sim_node" output="screen"/>
+
+</launch>

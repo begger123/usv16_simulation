@@ -1,0 +1,28 @@
+<launch>
+  <!-- declare arg to be passed in -->
+  <arg name="init_x"/>
+  <arg name="init_y"/>
+  <arg name="init_heading"/>
+
+  <node
+    pkg="usv16_viz"
+    type="task_manager"
+    name="manager_node"
+    launch-prefix="xterm -e"
+  >
+    <param name="init_x" value="$(arg init_x)" />
+    <param name="init_y" value="$(arg init_y)" />
+    <param name="init_heading" value="$(arg init_heading)" />
+  </node>
+
+  <node
+    pkg="usv16_viz"
+    type="ship_dynamics"
+    name="dynamics_node"
+    required="true"
+  >
+    <param name="init_x" value="$(arg init_x)" />
+    <param name="init_y" value="$(arg init_y)" />
+    <param name="init_heading" value="$(arg init_heading)" />
+  </node>
+</launch>

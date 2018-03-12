@@ -1,0 +1,10 @@
+# goal definition
+float64[] pos_x
+float64[] pos_y
+float64 init_heading
+---
+# result definition
+uint32 final_wpt
+---
+# feedback definition
+uint32 progress
