@@ -1,0 +1,16 @@
+#####################
+# Simulation Params #
+#####################
+
+initialPosition:
+  x: 100
+  y: 20
+  psi: 45
+
+##################
+# Map Parameters #
+##################
+
+positionReference:
+  latRef: 26.015712
+  lonRef: -80.122194

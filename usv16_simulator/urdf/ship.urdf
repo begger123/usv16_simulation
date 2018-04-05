@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<robot name="Ship">
+  <link name="Ship">
+    <visual>
+      <geometry>
+        <box size="4.8 .4 .4"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 1.0 0"/>
+      <material name="yellow">
+        <color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="platform">
+    <visual>
+      <geometry>
+        <box size="1.5 1.0 .05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.5 0 -1.5"/>
+      <material name="grey">
+        <color rgba="0.6 0.6 0.6 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="base_to_platform" type="fixed">
+    <parent link="Ship"/>
+    <child link="platform"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <link name="pillar1">
+    <visual>
+      <geometry>
+        <cylinder length="1.6" radius="0.03"/>
+      </geometry>
+      <origin rpy="-0.3 0 0" xyz="-1.2 0.7 -0.75"/>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_pillar1" type="fixed">
+    <parent link="Ship"/>
+    <child link="pillar1"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+<link name="pillar2">
+  <visual>
+    <geometry>
+      <cylinder length="1.6" radius="0.03"/>
+    </geometry>
+    <origin rpy="-0.3 0 0" xyz="0.2 0.7 -0.75"/>
+    <material name="grey"/>
+  </visual>
+</link>
+
+<joint name="base_to_pillar2" type="fixed">
+  <parent link="Ship"/>
+  <child link="pillar2"/>
+  <origin xyz="0 0 0"/>
+</joint>
+
+<link name="pillar3">
+  <visual>
+    <geometry>
+      <cylinder length="1.6" radius="0.03"/>
+    </geometry>
+    <origin rpy="0.3 0 0" xyz="-1.2 -0.7 -0.75"/>
+    <material name="grey"/>
+  </visual>
+</link>
+
+<joint name="base_to_pillar3" type="fixed">
+  <parent link="Ship"/>
+  <child link="pillar3"/>
+  <origin xyz="0 0 0"/>
+</joint>
+
+<link name="pillar4">
+  <visual>
+    <geometry>
+      <cylinder length="1.6" radius="0.03"/>
+    </geometry>
+    <origin rpy="0.3 0 0" xyz="0.2 -0.7 -0.75"/>
+    <material name="grey"/>
+  </visual>
+</link>
+
+<joint name="base_to_pillar4" type="fixed">
+  <parent link="Ship"/>
+  <child link="pillar4"/>
+  <origin xyz="0 0 0"/>
+</joint>
+
+  <link name="left_hull">
+    <visual>
+      <geometry>
+        <box size="4.8 .4 .4"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 -1.0 0"/>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="base_to_left_hull" type="fixed">
+    <parent link="Ship"/>
+    <child link="left_hull"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <link name="right_nose">
+    <visual>
+      <geometry>
+        <cylinder length="0.4" radius="0.2"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="2.4 1.0 0"/>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="base_to_r_nose" type="fixed">
+    <parent link="Ship"/>
+    <child link="right_nose"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <link name="left_nose">
+    <visual>
+      <geometry>
+        <cylinder length="0.4" radius="0.2"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="2.4 -1.0 0"/>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+ </link>
+
+ <joint name="base_to_l_nose" type="fixed">
+   <parent link="Ship"/>
+   <child link="left_nose"/>
+   <origin xyz="0 0 0"/>
+ </joint>
+</robot>

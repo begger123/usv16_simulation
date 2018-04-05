@@ -1,0 +1,24 @@
+These are the steps that you must take when downloading Bo Li's simulator to allow it to run on a different machine:
+
+1)Change the locations where config files are being loaded
+	line 66 of "/home/seatechmsl/Documents/ros_cws/src/usv16_simulator/src/path_planner/TrajectoryPlanner.cpp"
+
+2)Ensure the node launching RVIZ is enable is 
+usv16_simulator/launch/simulator.launch
+
+3)roslaunch usv16_simulator simulator.launch
+
+4)rosrun rviz rviz
+
+5)open config file from File>>Open Config
+	use usv16_simulator/config/rviz.rviz
+6)add topic by display type
+	--AerialMapDisplay
+7)change number of blocks on new AerialMapDisplay to 1
+
+8)Change Object URI to
+http://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.jpg?access_token=pk.eyJ1IjoibGl0aGVyIiwiYSI6ImNpdWV3NjFwazAwY2wyb3J1eXZqMDJsN3cifQ.Dm8Zx4UU-H2nlINV6D-b8Q
+
+9)Under topic, select /gps_publisher
+
+10)While not necessary, it is suggested to save your rviz environment to 

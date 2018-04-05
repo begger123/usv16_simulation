@@ -1,0 +1,12 @@
+# goal definition
+float64[] start_pose
+float64[] start_vel
+float64[] end_pose
+---
+# result definition
+float64[] wpt_x
+float64[] wpt_y
+float64[] wpt_psi
+---
+# feedback definition
+float64 elapsed_time

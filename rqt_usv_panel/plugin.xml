@@ -1,0 +1,16 @@
+<library path="lib/librqt_usv_panel">
+  <class name="rqt_usv_panel/UsvPanel" type="rqt_usv_panel::UsvPanel" base_class_type="rqt_gui_cpp::Plugin">
+    <description>
+      A GUI plugin to control individual vehicles.
+    </description>
+    <qtgui>
+      <group>
+        <label>USV16</label>
+        <icon type="theme">folder</icon>
+      </group>
+      <label>USV Control Panel</label>
+      <icon type="theme">applications-engineering</icon>
+      <statustip>Great user interface to provide real value.</statustip>
+    </qtgui>
+  </class>
+</library>

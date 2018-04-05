@@ -1,0 +1,12 @@
+# goal definition
+float64[] pos_x
+float64[] pos_y
+float64[] heading
+bool mission_type
+float64 mission_duration
+---
+# result definition
+uint32 final_wpt
+---
+# feedback definition
+uint32 progress

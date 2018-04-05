@@ -1,0 +1,93 @@
+<launch>  
+  <rosparam
+    file="$(find usv16)/config/control_params.yaml"
+    param="ctrl_params"
+    command="load"
+  />
+  
+  <param 
+    name="robot_description" textfile='$(find usv16)/urdf/ship.urdf' 
+  />
+  <param 
+    name="use_gui" value="True"
+  /> 
+
+  <node
+    pkg="usv16"
+    type="map_reference"
+    name="map_reference"
+  />
+  <node
+    pkg="usv16"
+    type="ship_dynamics"
+    name="dynamics_node"
+  />
+  
+  <node 
+    name="robot_state_publisher" 
+    pkg="robot_state_publisher" 
+    type="state_publisher"
+  />
+ <node
+    pkg="rviz"
+    type="rviz"
+    name="rviz_node"
+    args="-d $(find usv16)/config/rviz.rviz"
+  />
+
+  <node
+    pkg="usv16"
+    type="los_guidance"
+    name="guidance_node"
+  />
+  <node
+    pkg="usv16"
+    type="motion_controller"
+    name="control_node"
+  />
+  <node
+    pkg="usv16"
+    type="teleop_keyboard"
+    name="teleop_node"
+    launch-prefix="xterm -e"
+  />
+  <node
+    pkg="usv16"
+    type="path_planner"
+    name="planner_node"
+    respawn="true"
+  />
+  <node
+    pkg="topic_tools"
+    type="mux"
+    name="mux_cmd"
+    args="ship/raw_actuation ship/auto_control ship/manual_control"
+  />
+  <node
+    pkg="usv16"
+    type="viz_ship"
+    name="visualization_node"
+  />
+  <node
+    pkg="usv16"
+    type="task_manager"
+    name="manager_node"
+    launch-prefix="xterm -e"
+  />
+  <node
+    pkg="usv16"
+    type="thrust_allocation"
+    name="allocation_node"
+  />
+  <node
+    pkg="rqt_gui"
+    type="rqt_gui"
+    name="simulator_gui"
+  />
+  <node
+    pkg="joy"
+    type="joy_node"
+    name="joy_node"
+    output="screen"
+  />
+</launch>
