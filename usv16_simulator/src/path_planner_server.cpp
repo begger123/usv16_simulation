@@ -36,7 +36,7 @@ PathPlannerServer::PathPlannerServer(std::string name)
   // load the obstacles
   Parser lParserObj;
   
-  std::string ObstacleFile = "/home/travematics/Documents/msl_clone_cws/src/usv16_simulation/usv16_simulator/config/obstacles/ObstaclesCenter.txt";
+  std::string ObstacleFile = "/home/calvin/Programming/msl_cws/src/usv16_simulation/usv16_simulator/config/obstacles/ObstaclesCenter.txt";
   std::ifstream f(ObstacleFile.c_str());
   if (!f.good())
     ROS_ERROR_STREAM("ObstacleCenter file cannot be found!");
@@ -88,7 +88,7 @@ void PathPlannerServer::executeCallback(
   vector<double> end_pose = goal->end_pose;
   vector<double> start_vel = goal->start_vel;
 
-  ConfigFile lCfg("/home/travematics/Documents/msl_clone_cws/src/usv16_simulation/usv16_simulator/config/Config.txt");
+  ConfigFile lCfg("/home/calvin/Programming/msl_cws/src/usv16_simulation/usv16_simulator/config/Config.txt");
   TrajectoryPlanner lPlanner(lCfg);
   vector<double> lTraj =
       lPlanner.computeTrajectory(start_pose, start_vel, end_pose);

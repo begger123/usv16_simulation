@@ -93,6 +93,7 @@ int Usv16RosInterface::simulate(void)
 	while(false == fst_msg_)
 	{
 
+		ROS_WARN("STUFF");
 		// continue incrementing time until first message is received, then 
 		// only publish every time an actuator is sent
 		st_pub_->publish(simulate_topic_wrapper_(act_msg_));
@@ -113,6 +114,7 @@ int Usv16RosInterface::simulate(void)
 		// If there is a new message perform calculation
 		if(n_msg_)
 		{
+			ROS_WARN("STUFF2");
 			// simulate
 			usv16_msgs::Usv16State state = simulate_topic_wrapper_(act_msg_);
 			st_pub_->publish(state);
