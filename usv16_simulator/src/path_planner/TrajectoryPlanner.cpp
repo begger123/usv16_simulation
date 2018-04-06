@@ -63,13 +63,13 @@ void TrajectoryPlanner::init()
 
 	Parser lParserObj;
 //	mActionSet = lParserObj.parseControlActions("../config/ControlActions.txt");
-    mActionSet = lParserObj.parseControlActions("/home/calvin/Programming/msl_cws/src/usv16_simulation/usv16_simulator/config/ControlActions.txt");
+    mActionSet = lParserObj.parseControlActions("/home/travematics/Programming/msl_cws/src/usv16_simulation/usv16_simulator/config/ControlActions.txt");
 //    mIntermediateActionSet = lParserObj.parseIntermediateControlActions("../config/IntermediateControlActions.txt");
-    mIntermediateActionSet = lParserObj.parseIntermediateControlActions("/home/calvin/Programming/msl_cws/src/usv16_simulation/usv16_simulator/config/IntermediateControlActions.txt");
+    mIntermediateActionSet = lParserObj.parseIntermediateControlActions("/home/travematics/Programming/msl_cws/src/usv16_simulation/usv16_simulator/config/IntermediateControlActions.txt");
 	mParsedObstacles.clear();
 	// mParsedObstacles = lParserObj.loadObstacles("../obstacles/ObstaclesAll.txt");
 //    mObstaclesCenters = lParserObj.loadObstaclesCenter("../obstacles/ObstaclesCenter.txt");
-    mObstaclesCenters = lParserObj.loadObstaclesCenter("/home/calvin/Programming/msl_cws/usv16_simulation/usv16_simulator/config/obstacles/ObstaclesCenter.txt");
+    mObstaclesCenters = lParserObj.loadObstaclesCenter("/home/travematics/Programming/msl_cws/usv16_simulation/usv16_simulator/config/obstacles/ObstaclesCenter.txt");
 	mAllObstacles.clear();
 	setStaticObstacles();
 	
