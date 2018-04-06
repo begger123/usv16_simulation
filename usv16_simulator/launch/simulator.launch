@@ -45,12 +45,12 @@
     type="motion_controller"
     name="control_node"
   />
-  <node
+  <!--<node
     pkg="usv16"
     type="teleop_keyboard"
     name="teleop_node"
     launch-prefix="xterm -e"
-  />
+  />-->
   <node
     pkg="usv16"
     type="path_planner"
@@ -84,10 +84,10 @@
     type="rqt_gui"
     name="simulator_gui"
   />
-  <node
+  <!--<node
     pkg="joy"
     type="joy_node"
     name="joy_node"
     output="screen"
-  />
+  />-->
 </launch>
