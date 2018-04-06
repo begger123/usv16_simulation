@@ -4,6 +4,7 @@
 #include <memory>
 #include <visualization_msgs/Marker.h>
 #include <geometry_msgs/Pose2D.h>
+#include "usv16_msgs/Usv16State.h"
 
 /////////////////////////
 // Forward Declaration //
@@ -69,7 +70,7 @@ private:
   // Private methods //
   /////////////////////
 
-  void sub_callback(const geometry_msgs::Pose2DConstPtr& msg);
+  void sub_callback(const usv16_msgs::Usv16State::ConstPtr& msg);
 };
 
 #endif // VIZ_TRAJECTORY_H

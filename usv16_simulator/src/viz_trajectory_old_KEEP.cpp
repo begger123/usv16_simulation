@@ -5,7 +5,6 @@
 #include <cmath>
 #include <cstdlib>
 #include <geometry_msgs/Pose2D.h>
-#include "usv16_msgs/Usv16State.h"
 
 using namespace std;
 
@@ -19,9 +18,8 @@ VizTrajectory::VizTrajectory()
   nh_ = unique_ptr<ros::NodeHandle>(new ros::NodeHandle);
 
   // define the subscriber/publisher
-  ROS_WARN("HOTFIX");
   sub_pos_ = unique_ptr<ros::Subscriber>(new ros::Subscriber(
-      nh_->subscribe("ship/state", 1000, &VizTrajectory::sub_callback, this)));
+      nh_->subscribe("ship/pose", 1000, &VizTrajectory::sub_callback, this)));
   pub_traj_ = unique_ptr<ros::Publisher>(
       new ros::Publisher(nh_->advertise<visualization_msgs::Marker>(
           "ship/trajectory_marker", 1000)));
@@ -94,14 +92,13 @@ int VizTrajectory::run()
 // Private methods //
 /////////////////////
 
-void VizTrajectory::sub_callback(const usv16_msgs::Usv16State::ConstPtr& stateMsg)
+void VizTrajectory::sub_callback(const geometry_msgs::Pose2DConstPtr& msg)
 {
   geometry_msgs::Point p;
 
-  geometry_msgs::Pose2D msg = stateMsg->pose;
   // update the points of the line_strip
-  p.x = msg.x;
-  p.y = -msg.y; // add the minus sign because of the transformation from world
+  p.x = msg->x;
+  p.y = -msg->y; // add the minus sign because of the transformation from world
                  // to the earth frame
   p.z = 0;
 
@@ -116,12 +113,12 @@ void VizTrajectory::sub_callback(const usv16_msgs::Usv16State::ConstPtr& stateMs
 
   // update the ship marker
   geometry_msgs::Point p1, p2;
-  p.x = msg.x + 5 * cos(msg.theta);
-  p.y = -(msg.y + 5 * sin(msg.theta));
-  p1.x = msg.x - 3 * cos(msg.theta) - 5 * sin(msg.theta);
-  p1.y = -(msg.y - 3 * sin(msg.theta) + 5 * cos(msg.theta));
-  p2.x = msg.x - 3 * cos(msg.theta) + 5 * sin(msg.theta);
-  p2.y = -(msg.y - 3 * sin(msg.theta) - 5 * cos(msg.theta));
+  p.x = msg->x + 5 * cos(msg->theta);
+  p.y = -(msg->y + 5 * sin(msg->theta));
+  p1.x = msg->x - 3 * cos(msg->theta) - 5 * sin(msg->theta);
+  p1.y = -(msg->y - 3 * sin(msg->theta) + 5 * cos(msg->theta));
+  p2.x = msg->x - 3 * cos(msg->theta) + 5 * sin(msg->theta);
+  p2.y = -(msg->y - 3 * sin(msg->theta) - 5 * cos(msg->theta));
 
   if (ship_.points.empty())
   {
@@ -145,8 +142,8 @@ void VizTrajectory::sub_callback(const usv16_msgs::Usv16State::ConstPtr& stateMs
   br_ef_->sendTransform(tf::StampedTransform(transform, ros::Time::now(),
                                              "world", "Earth-fixed frame"));
 
-  transform.setOrigin(tf::Vector3(msg.x, msg.y, 0));
-  q.setRPY(0, 0, msg.theta);
+  transform.setOrigin(tf::Vector3(msg->x, msg->y, 0));
+  q.setRPY(0, 0, msg->theta);
   transform.setRotation(q);
   br_bf_->sendTransform(tf::StampedTransform(transform, ros::Time::now(),
                                              "Earth-fixed frame", "Ship"));

@@ -62,7 +62,7 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "thrust_allocation");
   ros::NodeHandle nh;
 
-  pub_actuation = nh.advertise<usv16::control>("ship/actuation", 1000);
+  pub_actuation = nh.advertise<usv16::control>("ship/actuation_sim", 1000);
   pub_actuator = nh.advertise<usv16::actuator>("ship/actuator_cmd", 1000);
   ros::Subscriber sub_actuation =
       nh.subscribe("ship/raw_actuation", 1000, &SubCallback);

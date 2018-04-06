@@ -26,7 +26,7 @@ ShipDynamicsInterface::ShipDynamicsInterface(const double& timer_step)
   // define the subscriber
   subPtr_act_ =
       std::unique_ptr<ros::Subscriber>(new ros::Subscriber(nh_.subscribe(
-          "ship/actuation", 1000, &ShipDynamicsInterface::callback_sub, this)));
+          "ship/actuation_sim", 1000, &ShipDynamicsInterface::callback_sub, this)));
 
   // get the ros parameters and define the vehicle
   get_ros_param();
