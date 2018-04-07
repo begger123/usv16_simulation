@@ -8,6 +8,7 @@ Panels:
         - /Status1
         - /Grid1/Offset1
         - /Marker1/Namespaces1
+        - /TF1
         - /TF1/Frames1
         - /AerialMapDisplay1
       Splitter Ratio: 0.400000006
@@ -30,7 +31,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: VLP-16
 Visualization Manager:
   Class: ""
   Displays:
@@ -46,7 +47,7 @@ Visualization Manager:
       Normal Cell Count: 0
       Offset:
         X: 0
-        Y: -150
+        Y: 0
         Z: 0
       Plane: XY
       Plane Cell Count: 100
@@ -65,7 +66,7 @@ Visualization Manager:
       Marker Topic: /ship/waypoints_marker
       Name: Marker
       Namespaces:
-        waypoints/viz: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -85,22 +86,22 @@ Visualization Manager:
           Value: true
         Ship:
           Value: true
-        left_hull:
-          Value: true
-        left_nose:
-          Value: true
-        pillar1:
-          Value: true
-        pillar2:
-          Value: true
-        pillar3:
-          Value: true
-        pillar4:
-          Value: true
+        back_arm:
+          Value: false
+        front_arm:
+          Value: false
+        owls_nest:
+          Value: false
         platform:
-          Value: true
-        right_nose:
-          Value: true
+          Value: false
+        port_pontoon:
+          Value: false
+        starboard_pontoon:
+          Value: false
+        velodyne:
+          Value: false
+        velodyne_base_link:
+          Value: false
         world:
           Value: false
       Marker Scale: 5
@@ -112,21 +113,19 @@ Visualization Manager:
         world:
           Earth-fixed frame:
             Ship:
-              left_hull:
+              back_arm:
                 {}
-              left_nose:
+              front_arm:
                 {}
-              pillar1:
-                {}
-              pillar2:
-                {}
-              pillar3:
-                {}
-              pillar4:
+              owls_nest:
                 {}
               platform:
+                velodyne_base_link:
+                  velodyne:
+                    {}
+              port_pontoon:
                 {}
-              right_nose:
+              starboard_pontoon:
                 {}
       Update Interval: 0
       Value: true
@@ -145,32 +144,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        left_hull:
+        back_arm:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        left_nose:
+        front_arm:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        pillar1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        pillar2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        pillar3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        pillar4:
+        owls_nest:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -180,7 +164,22 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        right_nose:
+        port_pontoon:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        starboard_pontoon:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -196,7 +195,7 @@ Visualization Manager:
       Marker Topic: /static_obstacles
       Name: MarkerArray
       Namespaces:
-        static_obstacles/viz: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -220,6 +219,36 @@ Visualization Manager:
       Topic: /gps_publisher
       Value: true
       Zoom: 19
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: ring
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 11
+      Min Color: 0; 0; 0
+      Min Intensity: 7
+      Name: VLP-16
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /velodyne_points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -245,25 +274,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 175.903229
+      Distance: 38.1799965
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 15.0171232
-        Y: -3.22746015
-        Z: -14.4529343
+        X: 3.18061113
+        Y: -4.30979395
+        Z: 9.05900955
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.56979632
+      Pitch: -0.165203273
       Target Frame: platform
       Value: Orbit (rviz)
-      Yaw: 3.15541792
+      Yaw: 3.0204215
     Saved: ~
 Window Geometry:
   Displays:
