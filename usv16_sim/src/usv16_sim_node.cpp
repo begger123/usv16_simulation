@@ -19,7 +19,7 @@
 
  void my_actuators_function(const double * u, double * tau)
  {
- 	const double lx = 2.0; // Longitudinal component from CG 
+ 	const double lx = 2.23; // Longitudinal component from CG 
  	const double ly = 1.0; // Lateral component from CG
 	
 	// sanity checks

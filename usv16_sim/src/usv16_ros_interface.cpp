@@ -51,15 +51,15 @@ Usv16RosInterface::Usv16RosInterface(int argc ,char ** argv)
 
 	// subscribe to actuator topic, only keep last 10 readings, using callback method refering to THIS object
 	sub_ = unique_ptr<ros::Subscriber>(new ros::Subscriber(
-		act_nh_->subscribe("ship/actuation", 1, 
+		act_nh_->subscribe("ship/actuation", 10, 
 		&Usv16RosInterface::actuator_callback_, this)));
 		// &Usv16RosInterface::actuator_callback_, this, ros::TransportHints().udp())));
 
 	st_pub_ = unique_ptr<ros::Publisher>(new ros::Publisher(
-		st_nh_->advertise<usv16_msgs::Usv16State>("ship/state", 1)));
+		st_nh_->advertise<usv16_msgs::Usv16State>("ship/state", 10)));
 
 	clk_pub_ = unique_ptr<ros::Publisher>(new ros::Publisher(
-		st_nh_->advertise<rosgraph_msgs::Clock>("/clock", 1)));
+		st_nh_->advertise<rosgraph_msgs::Clock>("/clock", 10)));
 
 
 	ROS_INFO_STREAM(db_name << "STARTED");
