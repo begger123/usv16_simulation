@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Ship">
+<link name="Ship">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://usv16/meshes/Ship.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="port_pontoon">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://usv16/meshes/port_pontoon.STL" />
+      </geometry>
+      <material
+        name="">
+        <color rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="port_pontoon_link" type="fixed">
+    <origin xyz="2.51854287019308 -1.1575284944847 1.50138062170411" rpy="1.5707963267949 0 0" />
+    <parent link="Ship" />
+    <child link="port_pontoon" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="starboard_pontoon">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://usv16/meshes/starboard_pontoon.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="starboard_pontoon_link" type="fixed">
+    <origin xyz="0.505592870193075 -1.1575284944847 1.50138062170411" rpy="1.5707963267949 0 0" />
+    <parent link="Ship" />
+    <child link="starboard_pontoon" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="front_arm">
+     <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://usv16/meshes/front_arm.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="front_arm_link" type="fixed">
+    <origin xyz="0.477017870193075 -3.3012884944847 2.04734366138336" rpy="1.5707963267949 0 0" />
+    <parent link="Ship" />
+    <child link="front_arm" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="back_arm">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://usv16/meshes/back_arm.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="back_arm_link" type="fixed">
+    <origin xyz="0.461035796545679 -1.62938510772266 1.80487186338744" rpy="1.70680851480681 0 0" />
+    <parent link="Ship" />
+    <child link="back_arm" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="platform">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://usv16/meshes/platform.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="platform_link" type="fixed">
+    <origin xyz="2.02006787019308 -3.2631884944847 2.55916499474097" rpy="1.5707963267949 6.12303176911189E-17 1.5707963267949" />
+    <parent link="Ship" />
+    <child link="platform" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="owls_nest">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://usv16/meshes/owls_nest.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="owls_nest_link" type="fixed">
+    <origin xyz="1.51206787019308 -1.4597884944847 2.64488999474097" rpy="1.5707963267949 0 0" />
+    <parent link="Ship" />
+    <child link="owls_nest" />
+    <axis xyz="0 0 0" />
+  </joint>
+ <xacro:include filename="$(find usv16)/urdf/VLP-16.urdf.xacro"/>
+ <VLP-16 parent="platform" name="velodyne" topic="/velodyne_points" hz="10" samples="440">
+   <origin xyz="0 0 0" rpy="1.5707 0 3.14159" />
+ </VLP-16>
+</robot>

@@ -1,0 +1,361 @@
+<robot
+  name="WAM-V">
+  <link
+    name="Ship">
+    <inertial>
+      <origin
+        xyz="1.51206787019308 1.78454626473221 0.280594889113911"
+        rpy="0 0 0" />
+      <mass
+        value="0.343059128131347" />
+      <inertia
+        ixx="1.02541857941861E-31"
+        ixy="-1.23259516440783E-32"
+        ixz="-1.7250223049292E-16"
+        iyy="0.347516126809007"
+        iyz="3.01060216944785E-47"
+        izz="0.347516126809007" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/Ship.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/Ship.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="port_pontoon">
+    <inertial>
+      <origin
+        xyz="2.7149E-05 0.025063 0.96995"
+        rpy="0 0 0" />
+      <mass
+        value="862.28" />
+      <inertia
+        ixx="919.07"
+        ixy="9.5403E-05"
+        ixz="-0.018323"
+        iyy="917.35"
+        iyz="-12.94"
+        izz="1.7236" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/port_pontoon.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/port_pontoon.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="port_pontoon_link"
+    type="fixed">
+    <origin
+      xyz="2.51854287019308 -1.1575284944847 1.50138062170411"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="port_pontoon" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="starboard_pontoon">
+    <inertial>
+      <origin
+        xyz="2.7148E-05 0.025067 0.96992"
+        rpy="0 0 0" />
+      <mass
+        value="862.3" />
+      <inertia
+        ixx="919.13"
+        ixy="9.55E-05"
+        ixz="-0.018324"
+        iyy="917.4"
+        iyz="-12.934"
+        izz="1.7242" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/starboard_pontoon.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/starboard_pontoon.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="starboard_pontoon_link"
+    type="fixed">
+    <origin
+      xyz="0.505592870193075 -1.1575284944847 1.50138062170411"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="starboard_pontoon" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="front_arm">
+    <inertial>
+      <origin
+        xyz="1.035 0.1647 -0.056607"
+        rpy="0 0 0" />
+      <mass
+        value="11.056" />
+      <inertia
+        ixx="0.69846"
+        ixy="0.0042605"
+        ixz="-0.0041643"
+        iyy="3.2431"
+        iyz="-0.32611"
+        izz="3.4715" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/front_arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/front_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_arm_link"
+    type="fixed">
+    <origin
+      xyz="0.477017870193075 -3.3012884944847 2.04734366138336"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="front_arm" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="back_arm">
+    <inertial>
+      <origin
+        xyz="1.0523 0.53236 -0.046184"
+        rpy="0 0 0" />
+      <mass
+        value="13.904" />
+      <inertia
+        ixx="0.082566"
+        ixy="-0.00023707"
+        ixz="-0.0019543"
+        iyy="0.090768"
+        iyz="-0.0085546"
+        izz="0.017971" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/back_arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/back_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_arm_link"
+    type="fixed">
+    <origin
+      xyz="0.461035796545679 -1.62938510772266 1.80487186338744"
+      rpy="1.70680851480681 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="back_arm" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="platform">
+    <inertial>
+      <origin
+        xyz="1.015 0.038366 -0.508"
+        rpy="0 0 0" />
+      <mass
+        value="33.428" />
+      <inertia
+        ixx="0.0027338"
+        ixy="-0.020382"
+        ixz="1.4515E-09"
+        iyy="0.15196"
+        iyz="1.9469E-10"
+        izz="0.15469" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/platform.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/platform.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="platform_link"
+    type="fixed">
+    <origin
+      xyz="2.02006787019308 -3.2631884944847 2.55916499474097"
+      rpy="1.5707963267949 6.12303176911189E-17 1.5707963267949" />
+    <parent
+      link="Ship" />
+    <child
+      link="platform" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="owls_nest">
+    <inertial>
+      <origin
+        xyz="7.7996E-05 0.24022 0.074068"
+        rpy="0 0 0" />
+      <mass
+        value="3.138" />
+      <inertia
+        ixx="0.076997"
+        ixy="7.1068E-06"
+        ixz="-7.0107E-05"
+        iyy="0.10637"
+        iyz="0.014352"
+        izz="0.069683" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/owls_nest.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WAM-V/meshes/owls_nest.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="owls_nest_link"
+    type="fixed">
+    <origin
+      xyz="1.51206787019308 -1.4597884944847 2.64488999474097"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="owls_nest" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
