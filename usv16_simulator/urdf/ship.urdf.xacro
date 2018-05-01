@@ -359,7 +359,7 @@
       xyz="0 0 0" />
   </joint>
  <xacro:include filename="$(find usv16)/urdf/VLP-16.urdf.xacro"/>
- <VLP-16 parent="platform" name="velodyne" topic="/velodyne_points" hz="10" samples="440">
+ <VLP-16 parent="platform" name="velodyne" topic="/velodyne_points" hz="5" samples="110">
    <origin xyz=".2 0.08 -0.5" rpy="1.5707 0 3.14159" />
  </VLP-16>
 </robot>

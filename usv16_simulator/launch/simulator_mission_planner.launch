@@ -1,5 +1,5 @@
+<?xml version="1.0"?>
 <launch>  
-
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
@@ -27,7 +27,7 @@
 
   <node pkg="usv16" type="map_reference" name="map_reference" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
-    <param name="publish_frequency" type="double" value="10.0" />
+    <param name="publish_frequency" type="double" value="4.0" />
   </node>
   <node pkg="rviz" type="rviz" name="rviz_node" args="-d $(find usv16)/config/simulation.rviz" />
   <node pkg="usv16" type="viz_ship" name="visualization_node" />
