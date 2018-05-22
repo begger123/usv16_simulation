@@ -47,6 +47,10 @@
   <build_depend>visualization_msgs</build_depend>
   <build_depend>actionlib_msgs</build_depend>
   <build_depend>message_generation</build_depend>
+  <build_depend>gazebo_plugins</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>hector_gazebo_plugins</build_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>tf</run_depend>
@@ -54,9 +58,11 @@
   <run_depend>message_runtime</run_depend>
   <run_depend>actionlib_msgs</run_depend>
 
-  <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <!-- Other tools can request additional information be placed here -->
 
+  <export>
+    <!-- This tells gazebo to look in the catkin_package path for resources
+    Particularly important for the models/pondmap.png file for the lake.world-->
+    <gazebo_ros gazebo_model_path="${prefix}:${prefix}/models"/>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
   </export>
 </package>

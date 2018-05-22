@@ -1,66 +1,34 @@
 <?xml version="1.0" ?>
-<sdf version="1.5">
-  <world name="default">
+<sdf version="1.4">
+  <world name="SeaTech">
+    <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+    </scene>
+
+    <wind>
+      <linear_velocity>10 0 0</linear_velocity> <!-- Wind linear velocity -->
+    </wind>
+    
     <!-- A global light source -->
     <include>
       <uri>model://sun</uri>
     </include>
-    <!-- A ground plane -->
-    <include>
-      <uri>model://ground_plane</uri>
-    </include>
-    <!-- A unit box -->
-    <model name='unit_box_0_0'>
-      <pose frame=''>-1.5 2.5 0.5 0 -0 0</pose>
-      <link name='link'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-        </inertial>
-        <collision name='collision'>
-          <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-        <gravity>1</gravity>
-      </link>
-    </model>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <!--<pose>240.235 110.553 61.4147 0 0.304 -2.78</pose>-->
+  <pose frame=''>17.5798 4.82061 4.05674 0 0.216 -2.876</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+     
+    
+
+
   </world>
 </sdf>

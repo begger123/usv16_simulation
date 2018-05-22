@@ -22,6 +22,8 @@
 #include "ros/ros.h"
 #include "ros/transport_hints.h" 	// <- udp hints to use udp
 #include "usv16_msgs/Usv16State.h"
+#include "geometry_msgs/Pose.h"
+#include "gazebo_msgs/SetModelState.h"
 
 #define EPSILON_NSEC 1
 
@@ -115,6 +117,35 @@ int Usv16RosInterface::simulate(void)
 			// simulate
 			usv16_msgs::Usv16State state = simulate_topic_wrapper_(act_msg_);
 			st_pub_->publish(state);
+
+			//also updates the state in gazebo
+			geometry_msgs::Pose start_pose;
+			start_pose.position.x = state.pose.x;
+			start_pose.position.y = state.pose.y;
+			start_pose.position.z = 0.0;
+			start_pose.orientation.x = 0.0;
+			start_pose.orientation.y = 0.0;
+			start_pose.orientation.z = sin(state.pose.theta)-cos(state.pose.theta);
+			start_pose.orientation.w = cos(state.pose.theta)+sin(state.pose.theta);
+
+			geometry_msgs::Twist start_twist;
+			start_twist.linear.x = 0.0;
+			start_twist.linear.y = 0.0;
+			start_twist.linear.z = 0.0;
+			start_twist.angular.x = 0.0;
+			start_twist.angular.y = 0.0;
+			start_twist.angular.z = 0.0;
+
+			gazebo_msgs::ModelState modelstate;
+			modelstate.model_name = (std::string) "ship";
+			modelstate.reference_frame = (std::string) "world";
+			modelstate.pose = start_pose;
+			modelstate.twist = start_twist;
+
+			ros::ServiceClient client = srv_nh.serviceClient<gazebo_msgs::SetModelState>("/gazebo/set_model_state");
+			gazebo_msgs::SetModelState setmodelstate;
+			setmodelstate.request.model_state = modelstate;
+			client.call(setmodelstate);							
 
 			// publish clock server
 			clk_pub_->publish(conv_time_to_topic_(get_prv_state()));
