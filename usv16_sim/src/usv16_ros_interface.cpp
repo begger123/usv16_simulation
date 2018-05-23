@@ -25,6 +25,7 @@
 #include "geometry_msgs/Pose.h"
 #include "gazebo_msgs/SetModelState.h"
 
+
 #define EPSILON_NSEC 1
 
 using namespace std;
@@ -33,6 +34,42 @@ using namespace std;
 static bool n_msg_ 			= false;
 static bool fst_msg_ 		= false;
 static const string db_name = "USV16-ROS Inteface : ";
+
+class eff2world
+{
+public:
+  eff2world() : tf_(),  target_frame_("Earth-fixed frame")
+  {
+    pose_sub_.subscribe(n_, "/ship/pose", 10);
+    tf_filter_ = new tf::MessageFilter<geometry_msgs::PoseStamped>(pose_sub_, tf_, target_frame_, 10);
+    tf_filter_->registerCallback( boost::bind(&eff2world::msgCallback, this, _1) );
+  } ;
+  geometry_msgs::PoseStamped state_out;
+  void printTheState()
+  {
+  	ROS_WARN("The written position is:%f, %f, %f.",state_out.pose.position.x,state_out.pose.position.y,state_out.pose.position.z);
+	ROS_WARN("The written orientation is:%f, %f, %f, %f.",state_out.pose.orientation.x,state_out.pose.orientation.y,state_out.pose.orientation.z,state_out.pose.orientation.w);
+  };
+private:
+  message_filters::Subscriber<geometry_msgs::PoseStamped> pose_sub_;
+  tf::TransformListener tf_;
+  tf::MessageFilter<geometry_msgs::PoseStamped> * tf_filter_;
+  ros::NodeHandle n_;
+  std::string target_frame_;
+
+  //  Callback to register with tf::MessageFilter to be called when transforms are available
+  void msgCallback(const boost::shared_ptr<const geometry_msgs::PoseStamped>& pose_ptr) 
+  {
+    try 
+    {
+      tf_.transformPose(target_frame_, *pose_ptr, state_out);
+    }
+    catch (tf::TransformException &ex) 
+    {
+      printf ("Failure %s\n", ex.what()); //Print exception which was caught
+    }
+  };
+};
 
 Usv16RosInterface::Usv16RosInterface(int argc ,char ** argv)
 {
@@ -63,6 +100,7 @@ Usv16RosInterface::Usv16RosInterface(int argc ,char ** argv)
 	clk_pub_ = unique_ptr<ros::Publisher>(new ros::Publisher(
 		st_nh_->advertise<rosgraph_msgs::Clock>("/clock", 10)));
 
+	pose_pub = st_nh_->advertise<geometry_msgs::PoseStamped>("/ship/pose", 10);
 
 	ROS_INFO_STREAM(db_name << "STARTED");
 }
@@ -107,6 +145,9 @@ int Usv16RosInterface::simulate(void)
 		ros::spinOnce();
 	}
 
+	//used to publish to gazebo
+	eff2world e2w;
+
 	// enter simulation super loop
 	while(ros::ok())
 	{
@@ -117,16 +158,19 @@ int Usv16RosInterface::simulate(void)
 			// simulate
 			usv16_msgs::Usv16State state = simulate_topic_wrapper_(act_msg_);
 			st_pub_->publish(state);
+			pose_stamped.header.stamp=ros::Time::now();
+			pose_stamped.header.frame_id = "world";
+			pose_stamped.pose.position.x=state.pose.x;
+			pose_stamped.pose.position.y=state.pose.y;
+			pose_stamped.pose.position.z=0;
+			pose_stamped.pose.orientation=tf::createQuaternionMsgFromYaw(state.pose.theta);
+			pose_pub.publish(pose_stamped);
 
-			//also updates the state in gazebo
 			geometry_msgs::Pose start_pose;
-			start_pose.position.x = state.pose.x;
-			start_pose.position.y = state.pose.y;
-			start_pose.position.z = 0.0;
-			start_pose.orientation.x = 0.0;
-			start_pose.orientation.y = 0.0;
-			start_pose.orientation.z = sin(state.pose.theta)-cos(state.pose.theta);
-			start_pose.orientation.w = cos(state.pose.theta)+sin(state.pose.theta);
+			start_pose.position = e2w.state_out.pose.position;
+			start_pose.orientation = e2w.state_out.pose.orientation;
+
+			//e2w.printTheState();
 
 			geometry_msgs::Twist start_twist;
 			start_twist.linear.x = 0.0;
@@ -145,8 +189,8 @@ int Usv16RosInterface::simulate(void)
 			ros::ServiceClient client = srv_nh.serviceClient<gazebo_msgs::SetModelState>("/gazebo/set_model_state");
 			gazebo_msgs::SetModelState setmodelstate;
 			setmodelstate.request.model_state = modelstate;
-			client.call(setmodelstate);							
-
+			client.call(setmodelstate);
+			
 			// publish clock server
 			clk_pub_->publish(conv_time_to_topic_(get_prv_state()));
 
@@ -283,3 +327,8 @@ usv16_msgs::Usv16State Usv16RosInterface::simulate_topic_wrapper_(const usv16_ms
 {
 	return conv_sim_to_topic_(sim_one_time_step(conv_topic_to_act_(msg)));
 }
+
+//This block of code will be how we convert the ship from earth fixed frame to world frame,
+//as well as then converting that world frame info to a quaternion to be sent to gazebo.
+//Note that this is truly a NED to EFF conversion, however the naming convention is such that
+//the eff has been defined as NED and world is world.

@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   std_srvs
   usv16_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -164,18 +165,6 @@ target_link_libraries(ml_usv16_dyn ${catkin_LIBRARIES})
 add_executable(usv16_sim_node src/usv16_sim_node.cpp src/usv16_ros_interface.cpp src/usv16_eom_3dof.cpp)
 target_link_libraries(usv16_sim_node ml_usv16_dyn ${catkin_LIBRARIES})
 add_dependencies(usv16_sim_node usv16_sim_generate_messages_cpp ml_usv16_dyn)
-
-# These are simple message passing executables to test message passing in UDP
-# executable for talker
-add_executable(test_talker src/test_talker.cpp)
-target_link_libraries(test_talker ${catkin_LIBRARIES})
-add_dependencies(test_talker usv16_sim_generate_messages_cpp)
-
-# executable for listener
-add_executable(test_listener src/test_listener.cpp)
-target_link_libraries(test_listener ${catkin_LIBRARIES})
-add_dependencies(test_listener usv16_sim_generate_messages_cpp)
-
 
 #############
 ## Install ##

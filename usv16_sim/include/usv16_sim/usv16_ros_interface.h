@@ -21,6 +21,11 @@
 #include "usv16_msgs/Usv16ActuatorInputs.h"
 #include "usv16_msgs/Usv16State.h"
 #include "usv16_sim/usv16_eom_3dof.h"
+#include "tf/transform_listener.h"
+#include "tf/transform_datatypes.h"
+#include "tf/message_filter.h"
+#include "message_filters/subscriber.h"
+#include "geometry_msgs/PoseStamped.h"
 
 // forward declaraton
 namespace ros {
@@ -94,7 +99,8 @@ private:
 
 	// pointer to handle message data
 	usv16_msgs::Usv16ActuatorInputsConstPtr act_msg_; // actuator message pointer
+	ros::Publisher pose_pub;
+	geometry_msgs::PoseStamped pose_stamped;
 
 };
-
 #endif
