@@ -10,9 +10,7 @@ Panels:
         - /Marker1/Namespaces1
         - /TF1
         - /TF1/Frames1
-        - /AerialMapDisplay1
-        - /LaserScan1
-      Splitter Ratio: 0.400000006
+      Splitter Ratio: 0.61944443
     Tree Height: 896
   - Class: rviz/Selection
     Name: Selection
@@ -84,25 +82,23 @@ Visualization Manager:
       Frames:
         All Enabled: false
         Earth-fixed frame:
-          Value: false
+          Value: true
         Ship:
-          Value: false
-        back_arm:
-          Value: false
-        front_arm:
           Value: false
         hokuyo_link:
           Value: false
-        owls_nest:
+        port_pontoon_link:
           Value: false
-        platform:
+        port_thruster_link:
           Value: false
-        port_pontoon:
+        stbd_pontoon_link:
           Value: false
-        starboard_pontoon:
+        stbd_thruster_link:
+          Value: false
+        superstructure_link:
           Value: false
         world:
-          Value: false
+          Value: true
       Marker Scale: 5
       Name: TF
       Show Arrows: false
@@ -112,18 +108,15 @@ Visualization Manager:
         world:
           Earth-fixed frame:
             Ship:
-              back_arm:
+              hokuyo_link:
                 {}
-              front_arm:
-                {}
-              owls_nest:
-                {}
-              platform:
-                hokuyo_link:
+              port_pontoon_link:
+                port_thruster_link:
                   {}
-              port_pontoon:
-                {}
-              starboard_pontoon:
+              stbd_pontoon_link:
+                stbd_thruster_link:
+                  {}
+              superstructure_link:
                 {}
       Update Interval: 0
       Value: true
@@ -142,37 +135,32 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        back_arm:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_arm:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         hokuyo_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        owls_nest:
+        port_pontoon_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        platform:
+        port_thruster_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        port_pontoon:
+        stbd_pontoon_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        starboard_pontoon:
+        stbd_thruster_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        superstructure_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -227,9 +215,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: -999999
+      Max Intensity: 0
       Min Color: 0; 0; 0
-      Min Intensity: 999999
+      Min Intensity: 0
       Name: LaserScan
       Position Transformer: XYZ
       Queue Size: 10
@@ -267,16 +255,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 131.047073
+      Distance: 30.6663799
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 5.9649868
-        Y: 5.43385124
-        Z: -6.47749233
+        X: 4.63787365
+        Y: -2.35551929
+        Z: -7.31085873
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false

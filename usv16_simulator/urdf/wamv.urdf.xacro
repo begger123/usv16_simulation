@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wamv">
+    <link
+    name="Ship">
+    <inertial>
+      <origin
+        xyz="-1.17919360537082 -9.06148303321118E-15 0.860343730008724"
+        rpy="0 0 0" />
+      <mass
+        value="0.343059128131349" />
+      <inertia
+        ixx="0.347516126809009"
+        ixy="-3.37337695186157E-15"
+        ixz="-8.26085664640087E-29"
+        iyy="2.41148850167688E-28"
+        iyz="-8.51011003765077E-15"
+        izz="0.347516126809009" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/Ship.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/Ship.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="port_pontoon">
+    <inertial>
+      <origin
+        xyz="0.667982797846472 -1.00650215302528 1.11848323057473"
+        rpy="0 0 0" />
+      <mass
+        value="862.145825161632" />
+      <inertia
+        ixx="1.71623425106692"
+        ixy="0.018316543228869"
+        ixz="12.9964386976976"
+        iyy="918.61395026534"
+        iyz="9.45491027828628E-05"
+        izz="916.897716909836" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/port_pontoon.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/port_pontoon.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="port_pontoon_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="port_pontoon" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="starboard_pontoon">
+    <inertial>
+      <origin
+        xyz="0.667982797837398 1.00644784697614 1.118483230571"
+        rpy="0 0 0" />
+      <mass
+        value="862.145825176159" />
+      <inertia
+        ixx="1.71623425178722"
+        ixy="0.0183165425566769"
+        ixz="12.9964386963807"
+        iyy="918.613950253061"
+        iyz="9.45493434948458E-05"
+        izz="916.897716896838" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/starboard_pontoon.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/starboard_pontoon.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="starboard_pontoon_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="starboard_pontoon" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="front_arm">
+    <inertial>
+      <origin
+        xyz="1.78456755758353 8.60883452266556E-05 0.433239010214825"
+        rpy="0 0 0" />
+      <mass
+        value="11.0653783507108" />
+      <inertia
+        ixx="3.48329675459449"
+        ixy="0.00416397529788845"
+        ixz="0.327721493095144"
+        iyy="0.701729726060603"
+        iyz="0.00426085885690877"
+        izz="3.25432953655983" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/front_arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/front_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_arm_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="front_arm" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="back_arm">
+    <inertial>
+      <origin
+        xyz="0.196024057121332 -0.00126533224415047 0.306308764986796"
+        rpy="0 0 0" />
+      <mass
+        value="13.9035526076094" />
+      <inertia
+        ixx="0.0170110170296931"
+        ixy="0.00196861747276408"
+        ixz="-0.00153977989031901"
+        iyy="0.0825656581724545"
+        iyz="3.0112194497348E-05"
+        izz="0.091728399399986" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/back_arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/back_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_arm_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="back_arm" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="platform">
+    <inertial>
+      <origin
+        xyz="0.788384783792086 9.45304951461926E-09 0.0473591264239022"
+        rpy="0 0 0" />
+      <mass
+        value="33.4284154923077" />
+      <inertia
+        ixx="0.00273377542516193"
+        ixy="1.45151924850804E-09"
+        ixz="-0.0203816574903959"
+        iyy="0.154689184136618"
+        iyz="1.94691116391814E-10"
+        izz="0.151955408711456" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/platform.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/platform.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="platform_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="platform" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="owls_nest">
+    <inertial>
+      <origin
+        xyz="0.0740681931076682 -7.79969530188682E-05 -0.240224715486504"
+        rpy="0 0 0" />
+      <mass
+        value="3.13802430797467" />
+      <inertia
+        ixx="0.0696830743963967"
+        ixy="7.01071827526787E-05"
+        ixz="-0.0143516867734258"
+        iyy="0.0769970584322021"
+        iyz="7.10722835819185E-06"
+        izz="0.106370940177521" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/owls_nest.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/wamv/owls_nest.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="owls_nest_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="owls_nest" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+ <xacro:include filename="$(find usv16)/urdf/Hokuyo.urdf.xacro"/>
+  <joint name="hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="1.75 0 0" rpy="0 0 0"/>
+    <parent link="platform"/>
+    <child link="hokuyo_link"/>
+  </joint>
+
+  <!-- Hokuyo Laser -->
+  <link name="hokuyo_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://usv16/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+</robot>
