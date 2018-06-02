@@ -359,16 +359,16 @@
       xyz="0 0 0" />
   </joint>
 
- <xacro:include filename="$(find usv16)/urdf/Hokuyo.urdf.xacro"/>
+ <!--<xacro:include filename="$(find usv16)/urdf/Hokuyo.urdf.xacro"/>
   <joint name="hokuyo_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0.37 -0.011 -0.237" rpy="0 3.14159 3.14159"/>
     <parent link="owl_eye_link"/>
     <child link="hokuyo_link"/>
-  </joint>
+  </joint>-->
 
   <!-- Hokuyo Laser -->
-  <link name="hokuyo_link">
+  <!--<link name="hokuyo_link">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -388,5 +388,5 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
-  </link>
+  </link>-->
 </robot>

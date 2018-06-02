@@ -21,12 +21,17 @@
     <gui fullscreen='0'>
       <camera name='user_camera'>
         <!--<pose>240.235 110.553 61.4147 0 0.304 -2.78</pose>-->
-  <pose frame=''>17.5798 4.82061 4.05674 0 0.216 -2.876</pose>
+        <pose frame=''>17.5798 4.82061 4.05674 0 0.216 -2.876</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
     <include>
       <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <pose> 0 0 0 0 0 0 </pose>
+      <uri>model://seatech</uri>
+      <!--<uri>model://models/lake</uri>-->
     </include>
   </world>
 </sdf>
