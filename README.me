@@ -32,3 +32,30 @@ http://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.jpg?access_token=pk.eyJ1Ij
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/vbass.urdf.xacro'" />
 
   NOTE--right now, this change is purely cosmetic, as all hydodynamic parameters are the same between the two systems
+
+  to run simulation:
+  roslaunch usv16_ctrl usv16_ctrl_sim.launch
+  then from a second terminal
+  roslaunch the_planner the_planner.launch
+
+  to record the data:
+  rqt_bag
+  press the red circle record button
+  select the topic to record - "/ship/state"
+  specify the file name
+  record as long as you like
+  press record button again to stop
+
+  Matlab command to read x and y position from a rosbag, and then plot
+  	clc; clear all; close all;
+	bag=rosbag('rec1_2018-06-12-14-14-59.bag' );
+	stateSelect=select(bag, 'Topic', '/ship/state');
+	stateStruct = readMessages(stateSelect,'DataFormat','struct');
+
+	x=zeros(length(stateStruct),1);
+	y=zeros(length(stateStruct),1);
+	for i=1:length(stateStruct)
+	    x(i)=stateStruct{i,1}.Pose.X;
+	    y(i)=stateStruct{i,1}.Pose.Y;
+	end
+	plot(x(1:132),y(1:132))
