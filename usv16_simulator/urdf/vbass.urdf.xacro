@@ -1,0 +1,361 @@
+<robot
+  name="vbass">
+  <link
+    name="Ship">
+    <inertial>
+      <origin
+        xyz="-0.0282890792586661 -0.00882618223886869 -0.0977502365516793"
+        rpy="0 0 0" />
+      <mass
+        value="0.66054354084576" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/lcg_bar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/lcg_bar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="port_pontoon_link">
+    <inertial>
+      <origin
+        xyz="-0.16252794303343 -0.33902194917429 0.0210904642418489"
+        rpy="0 0 0" />
+      <mass
+        value="39.772334505492" />
+      <inertia
+        ixx="0.00958006068997916"
+        ixy="4.24849021297709E-07"
+        ixz="0.010312102262737"
+        iyy="0.112127899553443"
+        iyz="-3.81687448190227E-07"
+        izz="0.102547838893894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/port_pontoon_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/port_pontoon_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="port_pontoon_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="port_pontoon_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="port_thruster_link">
+    <inertial>
+      <origin
+        xyz="-0.152112994764333 -0.00853840972908365 0.00874539537635202"
+        rpy="0 0 0" />
+      <mass
+        value="88.8893487551719" />
+      <inertia
+        ixx="9.71436576305709"
+        ixy="-0.013253864605526"
+        ixz="0.5922130384538"
+        iyy="10.5166612989968"
+        iyz="0.00641018228953188"
+        izz="19.1252656630925" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/port_thruster_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/port_thruster_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="port_thruster_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="port_pontoon_link" />
+    <child
+      link="port_thruster_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="stbd_pontoon_link">
+    <inertial>
+      <origin
+        xyz="-0.162527943033428 0.32137805082571 0.0210904642418459"
+        rpy="0 0 0" />
+      <mass
+        value="39.772334505492" />
+      <inertia
+        ixx="0.00958006068997905"
+        ixy="4.24849021306033E-07"
+        ixz="0.0103121022627369"
+        iyy="0.112127899553442"
+        iyz="-3.81687448214023E-07"
+        izz="0.102547838893894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/stbd_pontoon_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/stbd_pontoon_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stbd_pontoon_bar"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="stbd_pontoon_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="stbd_thruster_link">
+    <inertial>
+      <origin
+        xyz="-0.152112994764333 -0.00853840972908365 0.00874539537635204"
+        rpy="0 0 0" />
+      <mass
+        value="88.8893487551719" />
+      <inertia
+        ixx="9.71436576305709"
+        ixy="-0.0132538646055256"
+        ixz="0.5922130384538"
+        iyy="10.5166612989968"
+        iyz="0.00641018228953196"
+        izz="19.1252656630926" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/stbd_thruster_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/stbd_thruster_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stbd_thruster_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="stbd_pontoon_link" />
+    <child
+      link="stbd_thruster_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="superstructure_link">
+    <inertial>
+      <origin
+        xyz="-0.0983640277603385 -0.00882618223886848 -0.137052056291416"
+        rpy="0 0 0" />
+      <mass
+        value="5.46917378763522" />
+      <inertia
+        ixx="0.0201174418248864"
+        ixy="9.34679425891411E-18"
+        ixz="-0.000828831665835757"
+        iyy="0.0205419028109414"
+        iyz="6.83335919803787E-17"
+        izz="0.0393084428976315" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/superstructure_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/superstructure_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="superstructure_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ship" />
+    <child
+      link="superstructure_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="owl_eye_link">
+    <inertial>
+      <origin
+        xyz="-0.0144160023286412 -0.0202356918554919 0.0758174563823953"
+        rpy="0 0 0" />
+      <mass
+        value="1.04072197808693" />
+      <inertia
+        ixx="0.00569565135100077"
+        ixy="-0.000372671308793617"
+        ixz="0.00124544200244817"
+        iyy="0.00439081986016828"
+        iyz="0.00162544500155507"
+        izz="0.00383024018415446" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/owl_eye_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.517647058823529 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://usv16/meshes/vbass/owl_eye_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="owl_eye_joint"
+    type="fixed">
+    <origin
+      xyz="0.35906 0.035624 -0.25646"
+      rpy="0 0 0" />
+    <parent
+      link="superstructure_link" />
+    <child
+      link="owl_eye_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
