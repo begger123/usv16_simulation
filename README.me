@@ -22,3 +22,13 @@ http://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.jpg?access_token=pk.eyJ1Ij
 9)Under topic, select /gps_publisher
 
 10)While not necessary, it is suggested to save your rviz environment to 
+
+##NOTES FOR THE MACHINE LEARNING TEAM
+ - The file that you are going to need to change is called tester.cpp.  It is found in missionPlanner/src/missions/
+ - to change between v-bass and wamv, go to usv16_simulation/usv16_simulator/launch/simulator_mission_planner.launch
+ 		- change line 25 from :
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/ship.urdf.xacro'" />
+  to
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/vbass.urdf.xacro'" />
+
+  NOTE--right now, this change is purely cosmetic, as all hydodynamic parameters are the same between the two systems
