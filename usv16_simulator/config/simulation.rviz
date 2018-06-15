@@ -9,10 +9,11 @@ Panels:
         - /Grid1/Offset1
         - /Marker1/Namespaces1
         - /TF1
+        - /TF1/Status1
         - /TF1/Frames1
         - /AerialMapDisplay1
         - /LaserScan1
-      Splitter Ratio: 0.400000006
+      Splitter Ratio: 0.717579246
     Tree Height: 896
   - Class: rviz/Selection
     Name: Selection
@@ -189,7 +190,7 @@ Visualization Manager:
       Queue Size: 100
       Value: true
     - Alpha: 0.699999988
-      Blocks: 1
+      Blocks: 3
       Class: rviz_plugins/AerialMapDisplay
       Draw Behind: false
       Dynamically reload: true
@@ -264,25 +265,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 138.499466
+      Distance: 126.88269
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 5.9649868
-        Y: 5.43385124
-        Z: -6.47749233
+        X: 11.3559122
+        Y: -9.35310268
+        Z: -6.81275606
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.04479754
+      Pitch: 1.56979632
       Target Frame: world
       Value: Orbit (rviz)
-      Yaw: 3.31042171
+      Yaw: 3.0822475
     Saved: ~
 Window Geometry:
   Displays:
@@ -300,5 +301,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1855
-  X: 65
+  X: 1985
   Y: 24
