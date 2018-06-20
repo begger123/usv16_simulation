@@ -1,0 +1,17 @@
+  <!-- Spawn the example robot -->
+ <launch>
+	<!-- Load ROS params for the entire control system -->
+  <rosparam file="$(find usv16)/config/control_params.yaml" param="ctrl_params" command="load" />
+
+  <node pkg="tf" type="static_transform_publisher" name="world2eff" args="0 0 0 0 0 3.14159 world Earth_fixed_frame 100" />
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/vbass.urdf.xacro'" />
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -param /robot_description -model ship"/>
+
+  <node pkg="usv16" type="map_reference" name="map_reference" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+    <param name="publish_frequency" type="double" value="4.0" />
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz_node" args="-d $(find usv16)/config/simulation.rviz" />
+  <node pkg="usv16" type="viz_ship" name="visualization_node" />
+</launch>

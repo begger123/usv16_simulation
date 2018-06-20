@@ -3,7 +3,7 @@
 ######################
 
 # use simulation time rather than WALLCLOCK
-use_sim_time: true
+use_sim_time: false
 
 sim/ts: 0.25 # timestep
 
