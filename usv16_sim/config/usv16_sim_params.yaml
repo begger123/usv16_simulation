@@ -3,7 +3,7 @@
 ######################
 
 # use simulation time rather than WALLCLOCK
-use_sim_time: true
+use_sim_time: false
 
 sim/ts: 0.25 # timestep
 
@@ -11,6 +11,6 @@ sim/ts: 0.25 # timestep
 # Initial Conditions for Simulation #
 #####################################
 
-sim/ini/pose: [0.0, 0.0, rad(1*pi/4.0)] # [North (m) 	East (m) 	Yaw (rad)]
+sim/ini/pose: [-113, -30, rad(1*pi/4.0)] # [North (m) 	East (m) 	Yaw (rad)]
 sim/ini/vel:  [0.0, 0.0, 0.0] # [u (m/s) 	v (m/s) 	r (rad/s)]
 sim/ini/acc:  [0.0, 0.0, 0.0] # [ud (m/s^2) 	vd (m/s^2) 	rd (rad/s^2)]

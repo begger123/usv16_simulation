@@ -38,7 +38,7 @@ static const string db_name = "USV16-ROS Inteface : ";
 class eff2world
 {
 public:
-  eff2world() : tf_(),  target_frame_("Earth-fixed frame")
+  eff2world() : tf_(),  target_frame_("Earth_fixed_frame")
   {
     pose_sub_.subscribe(n_, "/ship/pose", 10);
     tf_filter_ = new tf::MessageFilter<geometry_msgs::PoseStamped>(pose_sub_, tf_, target_frame_, 10);

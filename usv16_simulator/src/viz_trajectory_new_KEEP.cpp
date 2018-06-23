@@ -101,7 +101,7 @@ void VizTrajectory::sub_callback(const usv16_msgs::Usv16State::ConstPtr& stateMs
   geometry_msgs::Pose2D msg = stateMsg->pose;
   // update the points of the line_strip
   p.x = msg.x;
-  p.y = -msg.y; // add the minus sign because of the transformation from world
+  p.y = msg.y; // add the minus sign because of the transformation from world
                  // to the earth frame
   p.z = 0;
 
@@ -139,11 +139,6 @@ void VizTrajectory::sub_callback(const usv16_msgs::Usv16State::ConstPtr& stateMs
   tf::Transform transform;
   tf::Quaternion q;
 
-  transform.setOrigin(tf::Vector3(0, 0, 0));
-  q.setRPY(M_PI, 0, 0);
-  transform.setRotation(q);
-  br_bf_->sendTransform(tf::StampedTransform(transform, ros::Time::now(),
-                                             "world", "Earth_fixed_frame"));
   transform.setOrigin(tf::Vector3(msg.x, msg.y, 0));
   q.setRPY(0, 0, msg.theta);
   transform.setRotation(q);
