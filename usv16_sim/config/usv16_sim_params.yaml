@@ -11,6 +11,10 @@ sim/ts: 0.25 # timestep
 # Initial Conditions for Simulation #
 #####################################
 
-sim/ini/pose: [-113, -30, rad(1*pi/4.0)] # [North (m) 	East (m) 	Yaw (rad)]
+positionReference:
+  latRef: 26.05553
+  lonRef: -80.113299783
+
+sim/ini/pose: [0, 0, -1.57] # [North (m) 	East (m) 	Yaw (rad)]
 sim/ini/vel:  [0.0, 0.0, 0.0] # [u (m/s) 	v (m/s) 	r (rad/s)]
 sim/ini/acc:  [0.0, 0.0, 0.0] # [ud (m/s^2) 	vd (m/s^2) 	rd (rad/s^2)]

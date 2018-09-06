@@ -3,9 +3,9 @@
 #####################
 
 initialPosition:
-  x: -115
-  y: -15
-  psi: 0
+  x: 0
+  y: 0
+  psi: -1.57
 
 
 ##################
@@ -13,5 +13,5 @@ initialPosition:
 ##################
 
 positionReference:
-  latRef: 29.152368
-  lonRef: -81.017156
+  latRef: 26.05553
+  lonRef: -80.113299783

@@ -1,5 +1,24 @@
 <?xml version="1.0"?>
 <launch>  
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="verbose" default="false"/>
+  <arg name="world_name" default="$(find usv16)/world/sandIsland.world"/>
+
+  <!-- Start gazebo and load the world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="verbose" value="$(arg verbose)"/>
+    <arg name="world_name" value="$(arg world_name)"/>
+  </include>
+
   <rosparam file="$(find usv16)/config/control_params.yaml" param="ctrl_params" command="load" />
   
   <!-- Spawn the example robot -->
@@ -8,8 +27,8 @@
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/vbass.urdf.xacro'" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -param /robot_description -model ship"/>
 =======
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/vbass.urdf.xacro'" />
->>>>>>> df0c5e6923b73942e4368aa2545c801c95babcb0
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/ship.urdf.xacro'" />
+>>>>>>> 82cba987279324f358fa2f5967a6e92636b61bf7
 
   <node pkg="usv16" type="map_reference" name="map_reference" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
