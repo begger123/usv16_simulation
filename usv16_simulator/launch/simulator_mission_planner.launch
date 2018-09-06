@@ -3,7 +3,7 @@
   <rosparam file="$(find usv16)/config/control_params.yaml" param="ctrl_params" command="load" />
   
   <!-- Spawn the example robot -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/vbass.urdf.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find usv16)/urdf/ship.urdf.xacro'" />
 
   <node pkg="usv16" type="map_reference" name="map_reference" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
