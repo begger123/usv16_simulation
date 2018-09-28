@@ -1,9 +1,11 @@
 These are the steps that you must take when downloading Bo Li's simulator to allow it to run on a different machine:
 
 1)Change the locations where config files are being loaded
-	line 66 of "/home/seatechmsl/Documents/ros_cws/src/usv16_simulator/src/path_planner/TrajectoryPlanner.cpp"
+	lines 66, 68, and 72 of "/path/to/your/catkin_workspace/src/usv16_simulation/usv16_simulator/src/path_planner/TrajectoryPlanner.cpp"
+  to "/path/to/your/catkin_workspace/src/usv16_simulation/usv16_simulator/src/path_planner/TrajectoryPlanner.cpp"
+  Note - current setting is something along the lines of /home/tardis/Programming/catkin_sandbox/src/usv16_simulation/usv16_simulator/config/ControlActions.txt
 
-2)Ensure the node launching RVIZ is enable is 
+2)Ensure the node launching RVIZ is enable in 
 usv16_simulator/launch/simulator.launch
 
 3)roslaunch usv16_simulator simulator.launch
